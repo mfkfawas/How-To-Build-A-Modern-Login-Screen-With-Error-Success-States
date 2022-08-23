@@ -7,10 +7,20 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.6rem;
+}
+
 :root {
   --primary-light-hsl: 200, 100%, 91%;
   --primary-hsl: 200, 100%, 50%;
   --primary-dark-hsl: 200, 100%, 6%;
+  --error-hsl: 100, 60%, 50%;
+  --success-hsl: 0, 60%, 50%;
 }
 
 .full-screen-container {
@@ -28,15 +38,95 @@
   --color: hsl(var(--primary-dark-hsl), 0.7);
   background-color: var(--color);
   box-shadow: 0 0 15px 0 var(--color);
-  padding: 30px 60px;
+  padding: 3rem 6rem;
   width: 80%;
-  max-width: 600px;
-  border-radius: 20px;
+  max-width: 60rem;
+  border-radius: 2rem;
 }
 
 .login-title {
   color: white;
   text-align: center;
-  font-size: 2rem;
+  font-size: 3.2rem;
   font-weight: normal;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: 4rem;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.input-group label {
+  color: white;
+  font-weight: lighter;
+}
+
+.input-group input {
+  font-size: 2rem;
+  padding: 0.5em;
+  background-color: hsl(var(--primary-light-hsl), 0.3);
+  border: none;
+  outline: none;
+  border-radius: 0.25em;
+  color: white;
+  font-weight: lighter;
+}
+
+.input-group input:focus {
+  /* going to work exactly as border, but we dont use border property here coz
+if we use border of 1px then everything moves, the reason for that is now 
+css add an extra pixel of border that were not present before */
+  /* box-shadow: x-offset y-offset blur spread color; */
+  box-shadow: 0 0 0 1px hsl(var(--primary-hsl));
+}
+
+.input-group.success input {
+  box-shadow: 0 0 0 1px hsl(var(--success-hsl));
+}
+
+.input-group.error input {
+  box-shadow: 0 0 0 1px hsl(var(--error-hsl));
+}
+
+/* .input-group .msg {
+  display: none;
+  font-size: 1.2rem;
+} */
+
+.input-group.success .msg,
+.input-group.error .msg {
+  display: block;
+}
+
+.input-group.success .msg {
+  color: hsl(var(--success-hsl));
+}
+
+.input-group.error .msg {
+  color: hsl(var(--error-hsl));
+}
+
+.login-button {
+  padding: 0.5em 1em;
+  font-size: 2.1rem;
+  font-weight: lighter;
+  color: white;
+  background-color: hsl(var(--primary-hsl), 0.25);
+  border: 1px solid hsl(var(--primary-hsl));
+  border-radius: 0.25em;
+  outline: none;
+  cursor: pointer;
+}
+
+.login-button:hover,
+.login-button:focus {
+  background-color: hsl(var(--primary-hsl), 0.4);
 }
